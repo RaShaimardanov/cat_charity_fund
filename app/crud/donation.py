@@ -13,7 +13,7 @@ class CRUDDonation(CRUDBase):
     ) -> Donation:
         db_donation = await session.execute(
             select(Donation).where(
-                Donation.fully_invested == False
+                ~Donation.fully_invested
             ).order_by(Donation.create_date.asc())
         )
         db_donation = db_donation.scalars().first()

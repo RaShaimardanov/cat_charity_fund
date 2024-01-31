@@ -28,7 +28,7 @@ class CRUDCharityProject(CRUDBase):
     ) -> CharityProject:
         db_charityproject = await session.execute(
             select(CharityProject).where(
-                CharityProject.fully_invested == False
+                ~CharityProject.fully_invested
             ).order_by(CharityProject.create_date.asc())
         )
         db_charityproject = db_charityproject.scalars().first()

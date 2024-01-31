@@ -1,6 +1,6 @@
 from typing import Optional
 
-from fastapi import Depends, HTTPException
+from fastapi import Depends
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.validators import CharityProjectValidator
@@ -21,5 +21,7 @@ async def get_donation_service(session: AsyncSession = Depends(get_async_session
     return DonationService(get_next_project, get_next_donation, session)
 
 
-async def get_project_validator(session: AsyncSession = Depends(get_async_session)) -> CharityProjectValidator:
+async def get_project_validator(
+        session: AsyncSession = Depends(get_async_session)
+) -> CharityProjectValidator:
     return CharityProjectValidator(session)
