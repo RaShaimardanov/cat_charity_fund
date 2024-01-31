@@ -48,8 +48,7 @@ async def get_all_charity_project(
         session: AsyncSession = Depends(get_async_session)
 ):
     """Получить список всех проектов."""
-    charityprojects = await charityproject_crud.get_multi(session)
-    return charityprojects
+    return await charityproject_crud.get_multi(session)
 
 
 @router.patch(
@@ -69,8 +68,7 @@ async def charity_project_update(
     Закрытый проект нельзя редактировать, также нельзя установить требуемую сумму меньше уже вложенной.
     """
     charity_project = await validator.validate_update(project_id, obj_in)
-    charity_project = await charityproject_crud.update(charity_project, obj_in, session)
-    return charity_project
+    return await charityproject_crud.update(charity_project, obj_in, session)
 
 
 @router.delete(
@@ -89,5 +87,4 @@ async def charity_project_delete(
     Нельзя удалить проект, в который уже были инвестированы средства, его можно только закрыть.
     """
     charity_project = await validator.validate_delete(project_id)
-    charity_project = await charityproject_crud.remove(charity_project, session)
-    return charity_project
+    return await charityproject_crud.remove(charity_project, session)

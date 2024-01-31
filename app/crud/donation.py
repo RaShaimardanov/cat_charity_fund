@@ -16,8 +16,7 @@ class CRUDDonation(CRUDBase):
                 ~Donation.fully_invested
             ).order_by(Donation.create_date.asc())
         )
-        db_donation = db_donation.scalars().first()
-        return db_donation
+        return db_donation.scalars().first()
 
     async def get_all_donations_user(
             self,
@@ -29,8 +28,7 @@ class CRUDDonation(CRUDBase):
                 Donation.user_id == user.id
             )
         )
-        db_donats = db_donats.scalars().all()
-        return db_donats
+        return db_donats.scalars().all()
 
 
 donation_crud = CRUDDonation(Donation)

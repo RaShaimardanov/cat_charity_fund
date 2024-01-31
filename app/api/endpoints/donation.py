@@ -45,8 +45,7 @@ async def get_all_donation(
     Только для суперпользователя.
     Получить список всех пожертвований.
     """
-    donations = await donation_crud.get_multi(session)
-    return donations
+    return await donation_crud.get_multi(session)
 
 
 @router.get(
@@ -61,5 +60,4 @@ async def get_user_donation(
     """
     Получить список пожертвований пользователя.
     """
-    donations = await donation_crud.get_all_donations_user(session, user)
-    return donations
+    return await donation_crud.get_all_donations_user(session, user)

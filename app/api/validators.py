@@ -30,7 +30,9 @@ class CharityProjectValidator:
             self,
             project_id: int,
     ) -> CharityProject:
-        charity_project = await charityproject_crud.get(project_id, self.session)
+        charity_project = await charityproject_crud.get(
+            project_id, self.session
+        )
         if charity_project is None:
             raise HTTPException(
                 status_code=HTTPStatus.NOT_FOUND,
@@ -42,7 +44,9 @@ class CharityProjectValidator:
             self,
             project_name: str,
     ) -> None:
-        project_id = await charityproject_crud.get_charityproject_id_by_name(project_name, self.session)
+        project_id = await charityproject_crud.get_charityproject_id_by_name(
+            project_name, self.session
+        )
         if project_id is not None:
             raise HTTPException(
                 status_code=HTTPStatus.BAD_REQUEST,

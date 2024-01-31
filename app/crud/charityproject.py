@@ -19,8 +19,7 @@ class CRUDCharityProject(CRUDBase):
                 CharityProject.name == charityproject
             )
         )
-        db_charityproject_id = db_charityproject_id.scalars().first()
-        return db_charityproject_id
+        return db_charityproject_id.scalars().first()
 
     async def get_next_charityproject_not_fully_invested(
             self,
@@ -31,8 +30,7 @@ class CRUDCharityProject(CRUDBase):
                 ~CharityProject.fully_invested
             ).order_by(CharityProject.create_date.asc())
         )
-        db_charityproject = db_charityproject.scalars().first()
-        return db_charityproject
+        return db_charityproject.scalars().first()
 
 
 charityproject_crud = CRUDCharityProject(CharityProject)
