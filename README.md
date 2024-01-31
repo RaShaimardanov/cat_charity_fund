@@ -1,1 +1,62 @@
-Заполни меня!
+# QRKot - приложение для Благотворительного фонда
+
+## Возможности проекта QRKot
+
+- Создание благотворительных проектов
+- Внесение пожертвований пользователями
+- Автоматическое поступление пожертвований в открытые проекты
+- Регистрация пользователей на основе FastAPI Users
+
+## Технологии
+
+[![Python](https://img.shields.io/badge/Python-000?style=for-the-badge)](https://www.python.org/)
+[![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-000?style=for-the-badge)](https://www.sqlalchemy.org/)
+[![Pydantic](https://img.shields.io/badge/Pydantic-000?style=for-the-badge)](https://docs.pydantic.dev/latest/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-000?style=for-the-badge)](https://fastapi.tiangolo.com/)
+
+## Установка и запуск проекта
+
+- В корневой папке создайте файл *.env* и добавьте в него свои данные (при необходимости):
+
+```
+APP_TITLE=         # Название приложения
+APP_DESCRIPTION=   # Описание приложения
+DATABASE_URL=      # Путь подключения к БД
+```
+- Установите зависимости
+```shell
+pip install -r requirements.txt
+```
+- Создайте миграции
+
+```shell
+alembic revision --autogenerate -m "First migration" 
+```
+
+- Установите миграции
+
+```shell
+alembic upgrade head
+```
+
+- Запустите проект
+
+```shell
+uvicorn main:app  --reload
+```
+
+## Документация проекта
+
+После запуска проекта откройте одну из ссылкок в браузере:
+
+```shell
+http://127.0.0.1:8000/docs
+```
+
+```shell
+http://127.0.0.1:8000/redoc
+```
+
+## Автор проекта:
+
+- [Расим Шаймарданов](https://github.com/RaShaimardanov/)
